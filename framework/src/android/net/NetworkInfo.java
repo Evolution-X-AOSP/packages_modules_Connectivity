@@ -140,7 +140,7 @@ public class NetworkInfo implements Parcelable {
 
     private int mNetworkType;
     private int mSubtype;
-    private String mTypeName;
+    private String mTypeName = null;
     private String mSubtypeName;
     @NonNull
     private State mState;
@@ -274,6 +274,9 @@ public class NetworkInfo implements Parcelable {
     @Deprecated
     public String getTypeName() {
         synchronized (this) {
+            if (mTypeName == null) {
+                mTypeName = "UNKNOWN";
+            }
             return mTypeName;
         }
     }
